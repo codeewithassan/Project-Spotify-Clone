@@ -1,0 +1,52 @@
+*{
+    box-sizing: border-box;
+}
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #555;
+    border-radius: 10px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+@keyframes colorLoop {
+    0%, 50%, 100% { color: #9ca3af; }
+    25%, 75% { color: #ffff; }
+  }
+  .animate-color {
+    animation: colorLoop 2s infinite ease-in-out;
+  }
+
+.seperator{
+    border-top: 1px solid rgba(128, 128, 128, 0.25);
+    max-width: 80vw;
+    margin: 0 2vw;
+}
+@keyframes spotifyScroll {
+    0%, 10% { transform: translateX(0); }
+    50% { transform: translateX(var(--move-distance)); }
+    60% { transform: translateX(var(--move-distance)); }
+    90%, 100% { transform: translateX(0); }
+}
+
+.scrolling-text-item {
+    display: inline-block;
+    width: max-content;
+    white-space: nowrap;
+}
+
+.scrolling-text {
+    animation: spotifyScroll 40s linear infinite;
+}
+.scrolling-text:hover {
+    animation-play-state: paused;
+}

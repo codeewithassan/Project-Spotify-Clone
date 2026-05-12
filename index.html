@@ -1,0 +1,1283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./src/input.css">
+    <link rel="stylesheet" href="./src/output.css">
+    <link rel="stylesheet" href="utility.css">
+    <link rel="shortcut icon" href="Spotify_Primary_Logo_RGB_Black.png" type="image/x-icon">
+    <title>Spotify Clone</title>
+</head>
+
+<body class="bg-black text-white font-sans">
+
+    <!-- Nav Bar -->
+    <nav class="navbar flex justify-between py-2 px-4 bg-black sticky z-50">
+
+        <!-- Logo -->
+        <div class="nav-p1 flex justify-center items-center gap-2">
+            <div class="logo-container">
+                <img src="Spotify_Primary_Logo_RGB_Black.png" alt="Spotify logo" class="logo w-10 h-10 invert">
+            </div>
+
+            <!-- Search Section -->
+            <ion-icon name="home-outline"
+                class="nav-icon text-2xl cursor-pointer hover:bg-[#1f1f1f] p-4 rounded-full ml-12"></ion-icon>
+            <div
+                class="search-section flex justify-center items-center gap-2 bg-[#242424] px-4 py-1 rounded-full border-2 border-transparent focus-within:border-white  transition-all duration-400">
+                <div class="flex items-center ">
+                    <ion-icon name="search-outline"
+                        class="text-2xl cursor-pointer transition-all duration-200 hover:scale-110"></ion-icon>
+                    <input type="text" placeholder="What do you want to play?"
+                        class="bg-transparent border-none outline-none ml-2 h-10 w-full text-sm placeholder-gray-400">
+                </div>
+                <ion-icon name="albums-outline"
+                    class="nav-icon text-2xl ml-20 cursor-pointer transition-all duration-200 hover:scale-110"></ion-icon>
+            </div>
+        </div>
+
+        <!-- Profile/Actions -->
+        <div class="profile-actions flex items-center gap-4 ">
+            <button
+                class="btn-premium font-medium text-sm bg-white text-black px-4 py-1.5 rounded-full hover:scale-105 transition-all duration-400 cursor-pointer">Explore
+                Premium</button>
+            <button
+                class="btn-install flex justify-center items-center gap-2 font-medium text-sm text-gray-400 hover:text-white hover:scale-105 cursor-pointer">
+                <ion-icon name="arrow-down-outline" class="install-icon "></ion-icon>
+                <span>Install App</span>
+            </button>
+            <ion-icon name="notifications-outline"
+                class="action-icon text-2xl ml-6 text-gray-400 hover:text-white cursor-pointer"></ion-icon>
+            <ion-icon name="people-outline"
+                class="action-icon text-2xl text-gray-400 hover:text-white cursor-pointer"></ion-icon>
+            <img src="profile.png" alt="Profile"
+                class="user-profile w-10 h-10 rounded-full border-2 border-black hover:border-gray-300 cursor-pointer">
+        </div>
+
+    </nav>
+    <!-- Sidebar aur Main Content ke liye Container yahan shuru karen -->
+    <div class="main-container flex gap-2 mx-4 items-center justify-center">
+        <!-- Sidebar -->
+        <div
+            class="library-sec group cursor-pointer bg-[#121212] p-4 rounded-lg w-full max-w-[24vw] h-[75vh] bg-gradient-to-b from-[#1a1a1a] to-[#0a0a0a]">
+            <div class="pb-4 sticky z-50">
+                <div class="library flex justify-between items-center mx-2">
+                    <h3
+                        class="flex gap-1 text-base font-bold items-center text-gray-300 group-hover:text-white cursor-pointer transition-all duration-300">
+                        <span
+                            class="w-0 opacity-0 overflow-hidden transition-all duration-500 ease-in-out group-hover:w-8 group-hover:opacity-100 flex items-center ">
+                            <ion-icon name="library-outline" class="text-2xl"></ion-icon>
+                        </span>
+                        Your Library
+                    </h3>
+                    <div>
+                        <ion-icon name="add-outline"
+                            class="text-2xl hover:bg-[#242424] p-1 rounded-full transition-all duration-400 cursor-pointer"></ion-icon>
+                        <ion-icon name="chevron-expand-outline"
+                            class="text-2xl hover:bg-[#242424] p-1 rounded-full transition-all duration-400 cursor-pointer"></ion-icon>
+                    </div>
+                </div>
+                <div class="playlists py-2 pb-2">
+                    <button
+                        class="bg-[#242424] text-gray-400 px-4 py-2 mt-4 rounded-full font-medium text-sm hover:text-white hover:bg-[#1f1f1f]">Playlists</button>
+                </div>
+            </div>
+
+            <div class="scroll max-h-[calc(70vh-18vh)] overflow-y-auto custom-scrollbar">
+                <div class="search flex justify-between items-center mx-2">
+                    <ion-icon name="search-outline"
+                        class="search text-2xl text-gray-400 hover:text-white hover:bg-[#1f1f1f] p-2 mb-4 rounded-full cursor-pointer transition-all duration-400"></ion-icon>
+                    <div
+                        class="recents flex justify-center items-center recents text-sm gap-1 text-gray-400 cursor-pointer hover:text-white hover:scale-[1.03] leading-none transition-all duration-400">
+                        <span>Recents</span>
+                        <span><ion-icon name="list-outline" class="recents-icon text-2xl"></ion-icon></span>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Extra for checking purpose || Starting-->
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+                <div
+                    class="playlist-songs hover:bg-[#1f1f1f] p-2 rounded-lg cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="card flex justify-start items-center gap-4">
+                        <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm"><img src="profile.png" alt=""></div>
+                        <div class="card-content">
+                            <p class="text-base font-semibold">Liked Songs</p>
+                            <p class="text-sm text-gray-400">Playlist • Your Name</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- Main Content -->
+        <main
+            class="sidebar flex flex-col bg-gradient-to-b from-[#1f1f1f] to-[#121212] rounded-lg w-full max-w-[56vw] h-[75vh] overflow-y-auto custom-scrollbar ">
+            <div
+                class="main-nav flex capsules bg-gradient-to-b from-[#2e2e2e] to-[#181717] px-10 py-4 gap-2 sticky top-0 z-50 shadow-[#1a1a1a] shadow-lg">
+                <button
+                    class="bg-white px-4 text-sm text-black cursor-pointer rounded-full hover:bg-white/90">All</button>
+                <button
+                    class="bg-[#1f1f1f] py-2 px-4 text-sm cursor-pointer hover:bg-[#242424] rounded-full">Music</button>
+            </div>
+            <div class="nav-music grid grid-cols-2 mx-12 my-1 gap-2">
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+
+                <!-- Extra for checking purpose || Starting-->
+
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+                <div
+                    class="music-card group flex justify-between items-center w-50% bg-[#262626] rounded-md cursor-pointer hover:bg-[#323232] transition-all duration-300">
+                    <div class="flex justify-center items-center">
+                        <img src="profile.png" alt="profile" class="w-14 bg-gray-600 rounded-l-md">
+                        <p class="ml-2 font-medium">Liked Songs</p>
+                    </div>
+                    <img src="Button.png" alt="Button"
+                        class="w-10 rounded-full p-1 mb-1 mr-4 opacity-0 group-hover:opacity-100 transition-all duration-300 transform translate-y-1 group-hover:translate-y-0">
+                </div>
+            </div>
+            <!-- Extra for checking purpose || Ending -->
+
+            <!------------ Albums ------------>
+            <section id="albums" class="albums">
+                <div class="heading flex justify-between items-center mx-8 pt-10">
+                    <h3 class="text-2xl font-bold">Albums featuring songs you liked</h3>
+                    <p class="mt-6 text-sm text-gray-400 cursor-pointer hover:underline">Show all</p>
+                </div>
+                <div class="album-cards flex max-w-[56vw] px-8 no-scrollbar overflow-x-auto ">
+                    <!------- CARD ------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <!------------- Extra cards for checking purpose --------------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+            </section>
+            <section id="albums" class="albums">
+                <div class="heading flex justify-between items-center mx-8 pt-10">
+                    <h3 class="text-2xl font-bold">Albums featuring songs you liked</h3>
+                    <p class="mt-6 text-sm text-gray-400 cursor-pointer hover:underline">Show all</p>
+                </div>
+                <div class="album-cards flex max-w-[56vw] px-8 no-scrollbar overflow-x-auto ">
+                    <!------- CARD ------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <!------------- Extra cards for checking purpose --------------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+            </section>
+            <section id="albums" class="albums">
+                <div class="heading flex justify-between items-center mx-8 pt-10">
+                    <h3 class="text-2xl font-bold">Albums featuring songs you liked</h3>
+                    <p class="mt-6 text-sm text-gray-400 cursor-pointer hover:underline">Show all</p>
+                </div>
+                <div class="album-cards flex max-w-[56vw] px-8 no-scrollbar overflow-x-auto ">
+                    <!------- CARD ------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <!------------- Extra cards for checking purpose --------------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+            </section>
+            <section id="albums" class="albums">
+                <div class="heading flex justify-between items-center mx-8 pt-10">
+                    <h3 class="text-2xl font-bold">Albums featuring songs you liked</h3>
+                    <p class="mt-6 text-sm text-gray-400 cursor-pointer hover:underline">Show all</p>
+                </div>
+                <div class="album-cards flex max-w-[56vw] px-8 no-scrollbar overflow-x-auto ">
+                    <!------- CARD ------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <!------------- Extra cards for checking purpose --------------->
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+                    <div
+                        class="album-card group w-40 cursor-pointer p-3 shrink-0 rounded-lg hover:bg-[#242424] transition-all duration-200 relative">
+                        <img src="profile.png" alt="" class="w-[150px] bg-gray-600 rounded-lg ">
+                        <img src="Button.png" alt=""
+                            class=" w-10 rounded-full absolute bottom-30 right-5 opacity-0 group-hover:opacity-100 transition-all duration-300 delay-100 transform translate-y-2 group-hover:translate-y-0">
+                        <p class=" text-base line-clamp-2 mt-2 hover:underline">Song Name Lorem ipsum dolor sit amet.
+                        </p>
+                        <p class=" text-sm text-gray-400 line-clamp-2 mt-1">
+                            <span class="hover:underline">Artist Name,</span>
+                            <span class="hover:underline">cons adipining.</span>
+                            <span class="hover:underline">Arching quos.</span>
+                        </p>
+                    </div>
+            </section>
+            <!-- Extra Sections For Checking Purpose -->
+            <!----------------------------------- SECTION 2 --------------------------------->
+            <section class="famous-artists cursor-pointer mb-8 group/famous">
+                <div class="artists-cards grid grid-cols-1 my-8 mx-16">
+                    <div class="artist-card relative">
+                        <img src="profile.png" alt="" class=" w-full bg-gray-600 rounded-lg opacity-50">
+                        <div class="card flex justify-start items-center gap-4 absolute top-10 left-10">
+                            <div class="card-img w-32 p-2 bg-gray-600 rounded-lg"><img src="profile.png" alt=""></div>
+                            <div class="card-content w-2/3">
+                                <p class="text-3xl font-bold">Artist Name Lorem ipsum dolor sit.</p>
+                                <p class="text-medium text-gray-400 mt-2">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <div
+                            class="icons flex justify-between items-center w-full px-10 absolute bottom-10 opacity-0 group-hover/famous:opacity-100 transition-all transform translate-y-12 group-hover/famous:translate-y-0 ease-in-out duration-500">
+                            <div
+                                class="preview animate-color flex justify-center items-center gap-1 bg-black/40 px-3 py-1 rounded-full">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon><span
+                                    class="text-sm">Preview</span>
+                            </div>
+                            <div class="other-icons text-2xl flex justify-center items-center gap-3">
+                                <ion-icon name="ellipsis-horizontal"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="add-circle-outline"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="play-circle" class="text-6xl hover:scale-105"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="artists-cards grid grid-cols-1 my-8 mx-16">
+                    <div class="artist-card relative">
+                        <img src="profile.png" alt="" class=" w-full bg-gray-600 rounded-lg opacity-50">
+                        <div class="card flex justify-start items-center gap-4 absolute top-10 left-10">
+                            <div class="card-img w-32 p-2 bg-gray-600 rounded-lg"><img src="profile.png" alt=""></div>
+                            <div class="card-content w-2/3">
+                                <p class="text-3xl font-bold">Artist Name Lorem ipsum dolor sit.</p>
+                                <p class="text-medium text-gray-400 mt-2">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <div
+                            class="icons flex justify-between items-center w-full px-10 absolute bottom-10 opacity-0 group-hover/famous:opacity-100 transition-all transform translate-y-12 group-hover/famous:translate-y-0 ease-in-out duration-500">
+                            <div
+                                class="preview animate-color flex justify-center items-center gap-1 bg-black/40 px-3 py-1 rounded-full">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon><span
+                                    class="text-sm">Preview</span>
+                            </div>
+                            <div class="other-icons text-2xl flex justify-center items-center gap-3">
+                                <ion-icon name="ellipsis-horizontal"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="add-circle-outline"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="play-circle" class="text-6xl hover:scale-105"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="artists-cards grid grid-cols-1 my-8 mx-16">
+                    <div class="artist-card relative">
+                        <img src="profile.png" alt="" class=" w-full bg-gray-600 rounded-lg opacity-50">
+                        <div class="card flex justify-start items-center gap-4 absolute top-10 left-10">
+                            <div class="card-img w-32 p-2 bg-gray-600 rounded-lg"><img src="profile.png" alt=""></div>
+                            <div class="card-content w-2/3">
+                                <p class="text-3xl font-bold">Artist Name Lorem ipsum dolor sit.</p>
+                                <p class="text-medium text-gray-400 mt-2">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <div
+                            class="icons flex justify-between items-center w-full px-10 absolute bottom-10 opacity-0 group-hover/famous:opacity-100 transition-all transform translate-y-12 group-hover/famous:translate-y-0 ease-in-out duration-500">
+                            <div
+                                class="preview animate-color flex justify-center items-center gap-1 bg-black/40 px-3 py-1 rounded-full">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon><span
+                                    class="text-sm">Preview</span>
+                            </div>
+                            <div class="other-icons text-2xl flex justify-center items-center gap-3">
+                                <ion-icon name="ellipsis-horizontal"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="add-circle-outline"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="play-circle" class="text-6xl hover:scale-105"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="artists-cards grid grid-cols-1 my-8 mx-16">
+                    <div class="artist-card relative">
+                        <img src="profile.png" alt="" class=" w-full bg-gray-600 rounded-lg opacity-50">
+                        <div class="card flex justify-start items-center gap-4 absolute top-10 left-10">
+                            <div class="card-img w-32 p-2 bg-gray-600 rounded-lg"><img src="profile.png" alt=""></div>
+                            <div class="card-content w-2/3">
+                                <p class="text-3xl font-bold">Artist Name Lorem ipsum dolor sit.</p>
+                                <p class="text-medium text-gray-400 mt-2">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <div
+                            class="icons flex justify-between items-center w-full px-10 absolute bottom-10 opacity-0 group-hover/famous:opacity-100 transition-all transform translate-y-12 group-hover/famous:translate-y-0 ease-in-out duration-500">
+                            <div
+                                class="preview animate-color flex justify-center items-center gap-1 bg-black/40 px-3 py-1 rounded-full">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon><span
+                                    class="text-sm">Preview</span>
+                            </div>
+                            <div class="other-icons text-2xl flex justify-center items-center gap-3">
+                                <ion-icon name="ellipsis-horizontal"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="add-circle-outline"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="play-circle" class="text-6xl hover:scale-105"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="artists-cards grid grid-cols-1 my-8 mx-16">
+                    <div class="artist-card relative">
+                        <img src="profile.png" alt="" class=" w-full bg-gray-600 rounded-lg opacity-50">
+                        <div class="card flex justify-start items-center gap-4 absolute top-10 left-10">
+                            <div class="card-img w-32 p-2 bg-gray-600 rounded-lg"><img src="profile.png" alt=""></div>
+                            <div class="card-content w-2/3">
+                                <p class="text-3xl font-bold">Artist Name Lorem ipsum dolor sit.</p>
+                                <p class="text-medium text-gray-400 mt-2">Playlist • Spotify</p>
+                            </div>
+                        </div>
+                        <div
+                            class="icons flex justify-between items-center w-full px-10 absolute bottom-10 opacity-0 group-hover/famous:opacity-100 transition-all transform translate-y-12 group-hover/famous:translate-y-0 ease-in-out duration-500">
+                            <div
+                                class="preview animate-color flex justify-center items-center gap-1 bg-black/40 px-3 py-1 rounded-full">
+                                <ion-icon name="log-out-outline" class="text-2xl"></ion-icon><span
+                                    class="text-sm">Preview</span>
+                            </div>
+                            <div class="other-icons text-2xl flex justify-center items-center gap-3">
+                                <ion-icon name="ellipsis-horizontal"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="add-circle-outline"
+                                    class="text-4xl text-gray-400 hover:text-white"></ion-icon>
+                                <ion-icon name="play-circle" class="text-6xl hover:scale-105"></ion-icon>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <div class="seperator"></div>
+
+            <section class="main-footer">
+                <div class="main-footer grid grid-cols-5 w-90% mx-6 gap-3 my-8">
+                    <div class="flex flex-col gap-2">
+                        <p class=" cursor-pointer text-base hover:underline font-semibold">Company</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">About</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Jobs</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">For the
+                            Record</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class=" cursor-pointer text-base hover:underline font-semibold">Communities</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">For Artists
+                        </p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Developers
+                        </p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Advertising
+                        </p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Investors
+                        </p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Vendors</p>
+
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class=" cursor-pointer text-base hover:underline font-semibold">Useful links</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Support</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Free Mobile
+                            App</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Popular by
+                            Country</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Import your
+                            music</p>
+                    </div>
+                    <div class="flex flex-col gap-2">
+                        <p class=" cursor-pointer text-base hover:underline font-semibold">Spotify Plans</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Premium
+                            Individual</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Premium Duo
+                        </p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Premium
+                            Family</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Premium
+                            Student</p>
+                        <p class=" cursor-pointer text-gray-500 hover:underline text-sm hover:text-white/80">Spotify
+                            Free</p>
+                    </div>
+                    <div class="flex gap-2 text-lg">
+                        <ion-icon name="logo-instagram"
+                            class="cursor-pointer bg-[#242424] p-2 hover:bg-[#3b3b3b] rounded-full"></ion-icon>
+                        <ion-icon name="logo-twitter"
+                            class="cursor-pointer bg-[#242424] p-2 hover:bg-[#3b3b3b] rounded-full"></ion-icon>
+                        <ion-icon name="logo-facebook"
+                            class="cursor-pointer bg-[#242424] p-2 hover:bg-[#3b3b3b] rounded-full"></ion-icon>
+                    </div>
+                </div>
+            </section>
+            <div class="seperator"></div>
+
+            <div class="footer flex justify-between mx-6 my-8">
+                <div class="flex gap-3 flex-wrap">
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">Legal</p>
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">Safety & Privacy Center</p>
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">Privacy Policy</p>
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">Cookies</p>
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">About Ads</p>
+                    <p class="text-sm text-gray-400 hover:text-white cursor-pointer">Accessibility</p>
+                </div>
+                <div class="shrink-0">
+                    <p class="text-sm text-gray-500">&copy; 2026 Spotify MH</p>
+                </div>
+            </div>
+        </main>
+
+        <aside
+            class="content custom-scrollbar group bg-gradient-to-b from-[#343333] to-[#1a1a1a] w-full max-w-[20vw] h-[75vh] overflow-y-auto rounded-lg">
+            <!-- Library section yahan banayen -->
+            <div
+                class="aside-nav flex bg-[#1a1a1a] justify-between items-center py-4 px-2 sticky top-0 z-50 shadow-[#1a1a1a] shadow-lg">
+                <div class="flex gap-1 justify-center items-center overflow-hidden">
+                    <span
+                        class="opacity-0 w-0 bg-[#1a1a1a] group-hover:opacity-100 group-hover:w-8 transition-all transform ease-in-out duration-700 p-1 m-1 delay-75">
+                        <ion-icon name="enter-outline"
+                            class="text-2xl text-gray-400 hover:text-white cursor-pointer"></ion-icon>
+                    </span>
+                    <div class="scroll-window w-[200px] overflow-hidden px-1 pb-2 whitespace-nowrap">
+                        <span
+                            class="scrolling-text-item text-white font-medium text-base px-1.5 cursor-pointer hover:underline"
+                            style="--move-distance: calc(-100% + 140px);">
+                            Muhammad Hassan - Spotify Clone Project 2026-
+                        </span>
+                    </div>
+                </div>
+                <div class="icons flex justify-center items-center w-1/2">
+
+                    <span
+                        class="opacity-0 bg-[#1a1a1a] text-gray-400 hover:text-white cursor-pointer group-hover:opacity-100 transition-all  duration-700 delay-75">
+                        <ion-icon name="ellipsis-horizontal"
+                            class="text-xl hover:bg-[#303030] p-1 rounded-full transition-all duration-400 cursor-pointer"></ion-icon>
+                    </span>
+                    <span
+                        class="opacity-0 bg-[#1a1a1a] text-gray-400 hover:text-white cursor-pointer group-hover:opacity-100 transition-all  duration-700 delay-75">
+                        <ion-icon name="chevron-expand-outline"
+                            class="text-2xl hover:bg-[#303030] p-1 rounded-full transition-all duration-400 cursor-pointer"></ion-icon>
+                    </span>
+                </div>
+            </div>
+
+            <div class="song-card m-2 bg-[#1f1f1f] p-3 rounded-lg mb-6">
+                <div class="img">
+                    <img src="profile.png" alt="" class="w-80 bg-gray-500 rounded-lg cursor-pointer">
+                </div>
+                <div class="flex justify-between items-center my-2">
+                    <div class="other-content flex flex-col justify-center items-center">
+                        <div class="scroll-window w-[150px] overflow-hidden whitespace-nowrap">
+                            <p class="scrolling-text-item px-1 text-white font-bold text-2xl hover:underline cursor-pointer"
+                                style="--move-distance: calc(-100% + 140px);">
+                                Song Name - Lorem, ipsum dolor.
+                            </p>
+                        </div>
+                        <div class="scroll-window w-[150px] overflow-hidden whitespace-nowrap">
+                            <p class="scrolling-text-item px-1 text-gray-400 text-base hover:underline hover:text-white cursor-pointer"
+                                style="--move-distance: calc(-100% + 140px);">
+                                Artist Name
+                            </p>
+                        </div>
+                    </div>
+                    <div class="icon flex justify-center items-center">
+                        <ion-icon name="share-outline"
+                            class="text-2xl w-0 opacity-0 group-hover:opacity-100 group-hover:w-8 transition-all transform ease-in-out duration-500 text-gray-400 hover:text-white cursor-pointer"></ion-icon>
+                        <ion-icon name="add-circle-outline"
+                            class="text-2xl mt-1 text-gray-400 hover:text-white cursor-pointer"></ion-icon>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="artist-card rounded-t-lg overflow-hidden m-2 flex flex-col gap-2 cursor-pointer bg-[#1f1f1f] rounded-lg mb-6">
+                <div class="relative">
+                    <img src="profile.png" alt="" class="w-full bg-gray-500 cursor-pointer">
+                    <p class="absolute top-4 left-4 text-xl font-semibold">About the artist</p>
+                </div>
+                <div class="px-3">
+                    <p class="font-semibold hover:underline mb-2">Artist Name</p>
+                    <div class="flex justify-between items-center">
+                        <div class="text-gray-300 text-base">
+                            <p>12,345,678</p>
+                            <p>monthly listners</p>
+                        </div>
+                        <div>
+                            <button
+                                class="text-sm font-bold px-4 py-1.5 border-1 border-gray-400 transition-all duration-200 hover:border-white hover:scale-105 m-1 rounded-full cursor-pointer">Follow</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="px-3 pb-3">
+                    <p class="line-clamp-3 text-sm text-gray-300">Lorem ipsum dolor sit, amet consec adipisicing elit.
+                        Culpa, est ea!</p>
+                </div>
+            </div>
+            <div class="credits bg-[#1f1f1f] rounded-lg m-2 py-3 px-2 mb-6">
+                <div class="flex justify-between items-center p-2">
+                    <h3 class="font-bold">Credits</h3>
+                    <p class="text-sm text-gray-400 cursor-pointer hover:underline hover:text-white">Show all</p>
+                </div>
+                <div class="group/credit flex justify-between items-center hover:bg-[#323232] rounded-lg m-1 p-2">
+                    <div class=" text-sm cursor-pointer w-25">
+                        <p class="font-bold group-hover/credit:underline line-clamp-2">Artist Name</p>
+                        <p class="text-gray-300 truncate">Artist type</p>
+                    </div>
+                    <div>
+                        <button
+                            class="text-sm font-bold px-3 py-1.5 border-1 border-gray-400 transition-all duration-200 hover:border-white hover:scale-105 m-1 rounded-full cursor-pointer">Follow</button>
+                    </div>
+                </div>
+                <div class="group/credit flex justify-between items-center hover:bg-[#323232] rounded-lg m-1 p-2">
+                    <div class="text-sm cursor-pointer w-25">
+                        <p class="font-bold group-hover/credit:underline line-clamp-2">Artist Name Lorem ipsum dolor
+                            sit.</p>
+                        <p class="text-gray-300 truncate">Artist type</p>
+                    </div>
+                    <div>
+                        <button
+                            class="text-sm font-bold px-3 py-1.5 border-1 border-gray-400 transition-all duration-200 hover:border-white hover:scale-105 m-1 rounded-full cursor-pointer">Follow</button>
+                    </div>
+                </div>
+                <div class="group/credit flex justify-between items-center hover:bg-[#323232] rounded-lg m-1 p-2">
+                    <div class="text-sm cursor-pointer w-25">
+                        <p class="font-bold group-hover/credit:underline line-clamp-2">Artist Name</p>
+                        <p class="text-gray-300 truncate">Artist type Lorem ipsum dolor sit.</p>
+                    </div>
+                    <div>
+                        <button
+                            class="text-sm font-bold px-3 py-1.5 border-1 border-gray-400 transition-all duration-200 hover:border-white hover:scale-105 m-1 rounded-full cursor-pointer">Follow</button>
+                    </div>
+                </div>
+            </div>
+            <div class="queue bg-[#1f1f1f] rounded-lg m-2 py-3 px-2">
+                <div class="flex justify-between items-center p-2">
+                    <h3 class="font-bold text-base">Next in queue</h3>
+                    <p class="text-sm font-semibold text-gray-400 cursor-pointer hover:underline hover:text-white">Open
+                        queue</p>
+                </div>
+                <div class="card flex justify-start items-center gap-4 p-2">
+                    <div class="card-img w-12 p-2 bg-gray-600/40 rounded-sm">
+                        <img src="profile.png" alt="">
+                    </div>
+                    <div class="text-sm cursor-pointer w-25">
+                        <p class="font-semibold truncate">Song Name orem ipsum dolor sit amet.</p>
+                        <p class="text-gray-300 truncate hover:underline">Artist type</p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+    </div>
+    <footer class="flex justify-between items-center px-6 max-w-full">
+        <div class="footer-card flex justify-center items-center ">
+            <div class="card flex justify-start items-center gap-2 p-2">
+                <div class="card-img p-1 bg-gray-600/40 rounded-sm">
+                    <img src="profile.png" alt="" class="w-14">
+                </div>
+                <div class="text-sm w-full">
+                    <p class="font-semibold  text-base truncate cursor-pointer hover:underline">Song Name</p>
+                    <p class="text-gray-300 hover:text-white cursor-pointer truncate hover:underline">Artist type Lorem consectetur.</p>
+                </div>
+            </div>
+            <div class="icons">
+                <ion-icon class="text-2xl text-gray-400 hover:text-white cursor-pointer" name="add-circle-outline"></ion-icon>
+            </div>
+        </div>
+        <div class="footer-seekbar">
+            <div class="icons flex justify-center items-center gap-4">
+                <ion-icon class="text-xl cursor-pointer text-gray-400 hover:text-white hover:scale-110"
+                    name="shuffle-outline"></ion-icon>
+                <ion-icon class="text-xl cursor-pointer hover:scale-110 text-gray-400 hover:text-white "
+                    name="play-skip-back"></ion-icon>
+                <ion-icon class="text-4xl cursor-pointer hover:scale-110 text-gray-300 hover:text-white "
+                    name="play-circle"></ion-icon>
+                <ion-icon class="text-xl cursor-pointer hover:scale-110 text-gray-400 hover:text-white "
+                    name="play-skip-forward"></ion-icon>
+                <ion-icon class="text-xl cursor-pointer text-gray-400 hover:text-white hover:scale-110"
+                    name="repeat-outline"></ion-icon>
+            </div>
+            <div class="flex items-center gap-2 w-96 group">
+
+                <span class="text-[11px] text-[#b3b3b3] font-light">1:42</span>
+
+                <div class="relative w-full h-1 flex items-center">
+
+                    <input type="range" min="0" max="100" value="40"
+                        class="absolute w-full h-1 opacity-0 z-30 cursor-pointer appearance-none">
+                    <div class="absolute w-full h-1 bg-[#4d4d4d] rounded-full z-10"></div>
+                    <div class="absolute w-[40%] h-1 bg-white rounded-full z-20 group-hover:bg-[#1db954]"></div>
+                    <div
+                        class="absolute left-[40%] w-3 h-3 bg-white rounded-full shadow-md z-40 scale-0 group-hover:scale-100 transition-transform -translate-x-1/2">
+                    </div>
+                </div>
+
+                <span class="text-[11px] text-[#b3b3b3] font-light">3:50</span>
+
+            </div>
+        </div>
+        <div class="fotter-controls flex gap-2 text-xl justify-center items-center">
+            <div class="text-[#b3b3b3] group-hover:text-white text-2xl transition-colors">
+                <ion-icon name="mic-outline" class="cursor-pointer hover:text-white"></ion-icon>
+            </div>
+            <div class="text-[#b3b3b3] group-hover:text-white transition-colors">
+                <ion-icon name="reorder-four-outline" class="cursor-pointer hover:text-white"></ion-icon>
+            </div>
+            <div class="text-[#b3b3b3] group-hover:text-white transition-colors">
+                <ion-icon name="desktop-outline" class="cursor-pointer hover:text-white"></ion-icon>
+            </div>
+            <div class="flex justify-center items-center gap-2 group w-40">
+                <div class="text-[#b3b3b3] group-hover:text-white transition-colors">
+                    <ion-icon name="volume-medium-outline" class="cursor-pointer text-2xl hover:text-white"></ion-icon>
+                </div>
+
+                <div class="relative w-full h-1 flex items-center mb-1.5">
+
+                    <input type="range" min="0" max="100" value="70"
+                        class="absolute w-full h-1 opacity-0 z-30 cursor-pointer appearance-none">
+
+                    <div class="absolute w-full h-1 bg-[#4d4d4d] rounded-full z-10"></div>
+
+                    <div class="absolute w-[70%] h-1 bg-white rounded-full z-20 group-hover:bg-[#1db954]"></div>
+
+                    <div
+                        class="absolute left-[70%] w-3 h-3 bg-white rounded-full shadow-md z-40 scale-0 group-hover:scale-100 transition-transform -translate-x-1/2">
+                    </div>
+
+                </div>
+            </div>
+            <div class="text-[#b3b3b3] group-hover:text-white transition-colors">
+                    <ion-icon name="scan-outline" class="cursor-pointer hover:text-white"></ion-icon>
+                </div>
+        </div>
+    </footer>
+
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
